@@ -1,0 +1,48 @@
+﻿@page
+@model Todo.Pages.Todos.CreateModel
+@{
+    ViewData["Title"] = "Create Book";
+}
+
+<h1>Create Todos</h1>
+<hr/>
+
+<div class="row">
+    <div class="col-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Todos.Title" class="control-label"></label>
+                <input asp-for="Todos.Title" class="form-control" />
+                <span asp-validation-for="Todos.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-2">
+                <label asp-for="Todos.Description" class="control-label"></label>
+                <input asp-for="Todos.Description" class="form-control" />
+                <span asp-validation-for="Todos.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-2 ">
+                <label asp-for="Todos.IsCompleted" class="control-label"></label>
+                <input asp-for="Todos.IsCompleted" class="form-control form-check-input" type="checkbox" />
+                <span asp-validation-for="Todos.IsCompleted" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-2">
+                <label asp-for="Todos.DueDate" class="control-label"></label>
+                <input asp-for="Todos.DueDate"   class="form-control" />
+                <span asp-validation-for="Todos.DueDate" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-2">
+                <a asp-page="./Index" class="btn btn-danger">Back</a>
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+@{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

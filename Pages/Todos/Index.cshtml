@@ -1,0 +1,37 @@
+﻿@page
+@model Todo.Pages.Todos.IndexModel
+@{
+    ViewData["Title"] = "Todos";
+
+}
+
+<h1>Todos List</h1>
+<hr />
+<a asp-page="Create" class="btn btn-success float-end">Create</a>
+<table class="table table-responsive table-striped table-hover align-middle">
+    <thead>
+        <tr class="text-center">
+            <th>@Html.DisplayNameFor(model => model.Todos[0].Title)</th>
+            <th>@Html.DisplayNameFor(model => model.Todos[0].Description)</th>
+            <th>@Html.DisplayNameFor(model => model.Todos[0].IsCompleted))</th>
+            <th>@Html.DisplayNameFor(model => model.Todos[0].DueDate)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var todo in Model.Todos)
+        {
+            <tr class="text-center">
+                <td>@Html.DisplayFor(model => todo.Title)</td>
+                <td>@Html.DisplayFor(model => todo.Description)</td>
+                <td>@Html.DisplayFor(model => todo.IsCompleted)</td>
+                <td>@Html.DisplayFor(model => todo.DueDate)</td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@todo.Id" class="btn btn-primary">Edit</a>
+                    <a asp-page="./Detail" asp-route-id="@todo.Id" class="btn btn-success">Details</a>
+                    <a asp-page="./Delete" asp-route-id="@todo.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
